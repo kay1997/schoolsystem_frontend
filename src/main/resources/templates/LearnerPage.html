@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Learner Manager</title>
+</head>
+<body>
+<div align = "center">
+    <h1><font color="red"> List of Learners</font></h1>
+    <a href = "/learner/new">Add a new learner</a>
+    <br/><br/>
+    <table border="1" cellpadding="5">
+        <thead>
+            <tr align="center" bgcolor="yellow">
+                <th>Learner ID</th>
+                <th>First Name </th>
+                <th>Last Name </th>
+                <th>Gender</th>
+                <th>Option to edit</th>
+                <th>Option to delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr align="center" th:each="learner : ${listLearners}">
+                <td th:text="${learner.id}"> Learner ID</td>
+                <td th:text="${learner.firstname}"> First Name</td>
+                <td th:text="${learner.lastname}"> Last Name</td>
+                <td th:text="${learner.gender}"> Gender</td>
+                <td> <a th:href="@{/learner/edit/{id}(id=${learner.id})}">Edit</a></td>
+                <td> <a th:href="@{/learner/delete/{id}(id=${learner.id})}">Delete</a></td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
